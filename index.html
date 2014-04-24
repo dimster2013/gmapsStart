@@ -4,20 +4,22 @@
 
 <head>
     <meta charset="utf-8">
-    <title>pres the mapsw</title>
-    <script>document.write('<base href="' + document.location + '" />');</script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+    <title>other addresses widget</title>
+    <link data-require="bootstrap-css@3.x" data-semver="3.0.3" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <script data-require="angular.js@*" data-semver="1.2.9" src="http://code.angularjs.org/1.2.9/angular.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="0.10.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
     <script src="app.js"></script>
 </head>
 
 <body>
 
-<div ng-controller="MapsController">
-    <maps></maps>
+<div class="well">
+    <div ng-controller="OtherAddressesController">
+        <otheraddresses></otheraddresses>
+    </div>
+
+
 </div>
-
-
 
 
 </body>
