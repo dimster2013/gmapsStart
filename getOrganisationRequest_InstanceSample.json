@@ -1,0 +1,18 @@
+{
+   "@schemaLocation": "http://nhsd.com.au/v1/OrganisationFinder/GetOrganisationRequest GetOrganisationRequest.xsd",
+   "Identifier": {
+      "identifier_value": "String",
+      "identifier_schema": "http://www.altova.com/"
+   },
+   "Scope": {
+      "include_MutexMetadata": "true",
+      "include_RefMetadata": "true",
+      "mode": "EXCLUDE",
+      "Scope_Exception": [
+         "FACILITY",
+         [
+            "KNOWN_AS"
+         ]
+      ]
+   }
+}
