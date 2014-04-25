@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5906fc1-aca1-4213-9e91-9220c0cb2dc6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organisation/views/correspondence.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organisation/mockData/correspondence.json" />
-      <change type="DELETED" beforePath="C:\Users\Dimitri\Documents\GitHub\gmapsStart\organisation\views\correspondance.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organisation/controllers/tabsController.js" afterPath="$PROJECT_DIR$/organisation/controllers/tabsController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gmapsStart.iws" />
@@ -412,7 +408,11 @@
       <created>1398400219070</created>
       <updated>1398400219070</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="dfsf">
+      <created>1398405409377</created>
+      <updated>1398405409377</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
