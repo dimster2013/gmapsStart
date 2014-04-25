@@ -15,10 +15,23 @@ app.controller('TabsDemoCtrl',function ($scope) {
 
 app.directive('otheraddresses',function(){
     return {
-        restrict: 'E',
+        restrict: 'A',
         replace: true,
-        templateUrl: 'maps.html'
+        templateUrl: 'tabs.html'
     };
 })
+
+app.directive('map',function(){
+    return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: 'maps.html',
+        link: function(scope, element, attrs) {
+
+        }
+    };
+})
+
+
 
 
