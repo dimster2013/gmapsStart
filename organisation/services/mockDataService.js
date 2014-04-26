@@ -15,7 +15,8 @@
                 "Address": {
                     "streetNumber": 23,
                     "streetName": "Sussex street",
-                    "city": "Sydney"
+                    "city": "Sydney",
+                    "position": {"A": 150, "k": -33}
                 }
             }
         };

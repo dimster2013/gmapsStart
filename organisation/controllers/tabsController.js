@@ -36,6 +36,7 @@ app.controller('tabsController', function ($scope, mockdataService) {
     $scope.streetNumber=response.Address.streetNumber;
     $scope.streetName= response.Address.streetName;
     $scope.city= response.Address.city;
+    $scope.position=response.Address.position;
 
 
 })
