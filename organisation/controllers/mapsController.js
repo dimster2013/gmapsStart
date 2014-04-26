@@ -1,7 +1,3 @@
-/**
- * Created by Dimitri on 26/04/2014.
- */
-var app = angular.module('myApp', []);
 
 //This is worth to read for async processing
 //http://docs.angularjs.org/api/ng.$q
