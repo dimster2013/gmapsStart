@@ -22,23 +22,26 @@ app.service('GeoCoder', function ($q, $rootScope) {
 
 app.controller('MapCtrl', function ($scope, GeoCoder) {
     $scope.map; // this will be set by directive
-    $scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city;
+    $scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city+","+$scope.country;
 
     $scope.addMarkerFromAddress = function () {
 
-        if (!$scope.position) {
+        if ($scope.position!=null) {
             var latLng =$scope.position;
 
             var marker = new google.maps.Marker({
                 map: $scope.map,
-                position: latLng
+                center:  new google.maps.LatLng(latLng.A, latLng.k)
             });
-            $scope.map.setCenter(latLng);
+            $scope.map.setCenter(new google.maps.LatLng(parseFloat(latLng.A)
+                , parseFloat(latLng.k)));
+
+
         }
         else {
 
             GeoCoder.getLocations($scope.address).then(function (results) {
-                var latLng = results[2].geometry.location;
+                var latLng = results[0].geometry.location;
                 var marker = new google.maps.Marker({
                     map: $scope.map,
                     position: latLng

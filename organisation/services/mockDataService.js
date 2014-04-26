@@ -14,9 +14,10 @@
             return        {
                 "Address": {
                     "streetNumber": 23,
-                    "streetName": "Sussex street",
-                    "city": "Sydney",
-                    "position": {"A": 150, "k": -33}
+                    "streetName": "keizersgracht",
+                    "city": "amsterdam",
+                    "country":"the netherlands",
+                    "position": {"A": 15, "k": -33}
                 }
             }
         };
