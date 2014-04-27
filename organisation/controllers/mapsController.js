@@ -1,36 +1,56 @@
 //This is worth to read for async processing
 //http://docs.angularjs.org/api/ng.$q
+
 //You need to use $q, and $rootScope.$apply
-//app.service('GeoCoder', function ($q, $rootScope) {
-//    return {
-//        getLocations: function (address) {
-//            var deferred = $q.defer();
-//            var geocoder = new google.maps.Geocoder();
-//            console.log('address', address);
-//            geocoder.geocode({'address': address }, function (results, status) {
-//                $rootScope.$apply(function () {
-//                    if (status == google.maps.GeocoderStatus.OK) {
-//                        console.log(results);
-//                        deferred.resolve(results);
-//                    }
-//                });
-//            });
-//            return deferred.promise;
-//        }
-//    }
-//});
+app.service('GeoCoder', function ($q, $rootScope) {
+    return {
+        getLocations: function (address) {
+            var deferred = $q.defer();
+            var geocoder = new google.maps.Geocoder();
+            console.log('address', address);
+            geocoder.geocode({'address': address }, function (results, status) {
+                $rootScope.$apply(function () {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        console.log(results);
+                        deferred.resolve(results);
+                    }
+                });
+            });
+            return deferred.promise;
+        }
+    }
+});
 
+app.controller('MapCtrl', function ($scope,GeoCoder) {
 
-"use strict";
-
-app.controller('MapCtrl', function ($scope) {
     $scope.center =
     {lat: 44, lng: 3};
-    $scope.zoom=10;
+    $scope.zoom = 10;
+
+    if (1 == 0) {
+        $scope.center =
+        {lat: 44, lng: 3};
+        $scope.zoom = 10;
+    }
+    else
+    {
+        $scope.streetNumber = "12";
+        $scope.streetName = "sussex street";
+        $scope.city = "sydney";
+        $scope.country = "australia";
+
+        $scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city + "," + $scope.country;
+
+        GeoCoder.getLocations($scope.address).then(function (results) {
+            var latLng = results[0].geometry.location;
+            $scope.center =
+            {lat: latLng.k, lng: latLng.A};
+            $scope.zoom = 10;
+        });
+    }
 
 });
 
-//$scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city+","+$scope.country;
 
 //    $scope.addMarkerFromAddress = function () {
 //
