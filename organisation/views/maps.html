@@ -1,15 +1,24 @@
-<div ng-controller="MapCtrl" ng-init="addMarkerFromAddress()">
-    <div class="row-fluid">
-        <div class="span12">
-            {{center}}
-            <label>Address</label>
-            <!--<input type="text" ng-model="address" class="input-xxlarge input-height-large"-->
-                   <!--placeholder="Type your business address...">-->
-            <map id="map_canvas" style="height: 452px; margin-bottom: 20px;"></map>
+<div ng-controller="MapCtrl">
 
-            <button class="btn btn-primary btn-large pull-right" style="margin-bottom: inherit"
-                    ng-click="setBusinessLocation()">Save
-            </button>
+    <div class="repeat" ng-repeat="map in maps">
+        <gmaps center="map.center" zoom="map.zoom"></gmaps>
+
+        <div class="data">
+            <p>
+                <label>Latitude</label><input ng-model="map.center.lat"/>
+                <button ng-click="map.center.lat = map.center.lat - 1">-</button>
+                <button ng-click="map.center.lat = map.center.lat + 1">+</button>
+            </p>
+            <p>
+                <label>Longitude</label><input ng-model="map.center.lng"/>
+                <button ng-click="map.center.lng = map.center.lng - 1">-</button>
+                <button ng-click="map.center.lng = map.center.lng + 1">+</button>
+            </p>
+            <p>
+                <label>Zoom</label><input ng-model="map.zoom"/>
+                <button ng-click="map.zoom = map.zoom - 1">-</button>
+                <button ng-click="map.zoom = map.zoom + 1">+</button>
+            </p>
         </div>
     </div>
 </div>
