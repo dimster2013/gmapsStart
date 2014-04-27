@@ -24,11 +24,12 @@
 "use strict";
 
 app.controller('MapCtrl', function ($scope) {
-    $scope.maps = [
-        { center: {lat: 43.6, lng: 4}, zoom: 10 },
-        { center: {lat: 42, lng: 9}, zoom: 8 }
-    ];
+    $scope.center =
+    {lat: 44, lng: 3};
+    $scope.zoom=10;
+
 });
+
 //$scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city+","+$scope.country;
 
 //    $scope.addMarkerFromAddress = function () {

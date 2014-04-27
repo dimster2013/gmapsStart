@@ -1,24 +1,24 @@
 <div ng-controller="MapCtrl">
 
-    <div class="repeat" ng-repeat="map in maps">
-        <gmaps center="map.center" zoom="map.zoom"></gmaps>
+
+        <gmaps center="center" zoom="zoom"></gmaps>
 
         <div class="data">
             <p>
-                <label>Latitude</label><input ng-model="map.center.lat"/>
-                <button ng-click="map.center.lat = map.center.lat - 1">-</button>
-                <button ng-click="map.center.lat = map.center.lat + 1">+</button>
+                <label>Latitude</label><input ng-model="center.lat"/>
+                <button ng-click="center.lat = center.lat - 1">-</button>
+                <button ng-click="center.lat = center.lat + 1">+</button>
             </p>
             <p>
-                <label>Longitude</label><input ng-model="map.center.lng"/>
-                <button ng-click="map.center.lng = map.center.lng - 1">-</button>
-                <button ng-click="map.center.lng = map.center.lng + 1">+</button>
+                <label>Longitude</label><input ng-model="center.lng"/>
+                <button ng-click="center.lng = center.lng - 1">-</button>
+                <button ng-click="center.lng = center.lng + 1">+</button>
             </p>
             <p>
-                <label>Zoom</label><input ng-model="map.zoom"/>
-                <button ng-click="map.zoom = map.zoom - 1">-</button>
-                <button ng-click="map.zoom = map.zoom + 1">+</button>
+                <label>Zoom</label><input ng-model="zoom"/>
+                <button ng-click="zoom = zoom - 1">-</button>
+                <button ng-click="zoom = zoom + 1">+</button>
             </p>
         </div>
-    </div>
+    
 </div>
