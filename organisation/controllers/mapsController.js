@@ -1,26 +1,3 @@
-
-//get address geocoded
-app.service('GeoCoder', function ($q, $rootScope) {
-    return {
-        getLocations: function (address) {
-            var deferred = $q.defer();
-
-            var geocoder = new google.maps.Geocoder();
-            console.log('address', address);
-            geocoder.geocode({'address': address }, function (results, status) {
-                $rootScope.$apply(function () {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        console.log(results);
-                        deferred.resolve(results);
-                    }
-                });
-            });
-            return deferred.promise;
-        }
-    }
-});
-
-
 app.controller('MapCtrl', function ($scope, mockdataService) {
 
     var request = {
@@ -47,7 +24,7 @@ app.controller('MapCtrl', function ($scope, mockdataService) {
 });
 
 
-app.directive('gmaps', function factory($timeout, $q, GeoCoder,mockdataService) {
+app.directive('gmaps', function factory($timeout, $q, GeoCoder, mockdataService) {
     return {
         restrict: 'EA',
         template: '<div class="gmaps"></div>',
@@ -63,8 +40,30 @@ app.directive('gmaps', function factory($timeout, $q, GeoCoder,mockdataService) 
                 var lng = results.OrganisationBom.Contact["0"].Address.lng;
                 var lat = results.OrganisationBom.Contact["0"].Address.lat;
 
+                var country = results.OrganisationBom.Contact["0"].Address.country["#text"];
+                var suburb = results.OrganisationBom.Contact["0"].Address.suburb["#text"];
 
-                //todo insert another promise for geocoding here
+                scope.address = suburb + "," + country;
+
+                var servicePromise = GeoCoder.getLocations(scope.address).then(function (results) {
+                    var latLng = results[0].geometry.location;
+
+                    console.log(latLng.A);
+                    console.log(latLng.k);
+
+                    var mapOptions = {
+                        zoom: 10,
+                        center: new google.maps.LatLng(latLng.A, latLng.k),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+
+                    var map = new google.maps.Map(iElement[0], mapOptions);
+
+                    map.setCenter(new google.maps.LatLng(parseFloat(latLng.k), parseFloat(latLng.A)));
+
+                    return new $q.defer().promise;
+                });
+
                 var mapOptions = {
                     zoom: 10,
                     center: new google.maps.LatLng(lng, lat),
@@ -73,7 +72,7 @@ app.directive('gmaps', function factory($timeout, $q, GeoCoder,mockdataService) 
 
                 var map = new google.maps.Map(iElement[0], mapOptions);
 
-                map.setCenter(new google.maps.LatLng(parseFloat(lng), parseFloat(lat)));
+                map.setCenter(new google.maps.LatLng(parseFloat(lat), parseFloat(lng)));
 
                 return new $q.defer().promise;
 
@@ -84,5 +83,25 @@ app.directive('gmaps', function factory($timeout, $q, GeoCoder,mockdataService) 
     };
 });
 
+//get address geocoded
+app.service('GeoCoder', function ($q, $rootScope) {
+    return {
+        getLocations: function (address) {
+            var deferred = $q.defer();
+
+            var geocoder = new google.maps.Geocoder();
+            console.log('address', address);
+            geocoder.geocode({'address': address }, function (results, status) {
+                $rootScope.$apply(function () {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        console.log(results);
+                        deferred.resolve(results);
+                    }
+                });
+            });
+            return deferred.promise;
+        }
+    }
+});
 
 
