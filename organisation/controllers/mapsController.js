@@ -1,7 +1,8 @@
 //This is worth to read for async processing
 //http://docs.angularjs.org/api/ng.$q
 
-//You need to use $q, and $rootScope.$apply
+
+//get address geocoded
 app.service('GeoCoder', function ($q, $rootScope) {
     return {
         getLocations: function (address) {
@@ -22,26 +23,115 @@ app.service('GeoCoder', function ($q, $rootScope) {
     }
 });
 
-app.controller('MapCtrl', function ($scope) {
+//get orgdetails organisation (lat/long) amongst them
+//if latlong is available use this
+//otherwise geocode address if available
+app.service('Organisation', function ($q, $rootScope,mockdataService) {
+    return {
+        getOrgdetails: function (request) {
+            var deferred = $q.defer();
+
+            mockdataService.getOrganisation(request, function (results) {
+                $rootScope.$apply(function () {
+                    console.log(results);
+
+                    $scope.streetNumber=results[0].Address.streetNumber;
+                    $scope.streetName= results[0].Address.streetName;
+                    $scope.city= results[0].Address.city;
+                    $scope.position=results[0].Address.position;
+
+                    deferred.resolve(results);
+                });
+            });
+
+            return deferred.promise;
+        }
+    }
+});
+
+
+app.controller('MapCtrl', function ($scope,Organisation) {
 
 //    $scope.center =
 //    {lat: 44, lng: 3};
- $scope.zoom = 10;
+    $scope.zoom = 10;
 
-    if (1 == 0) {
-        $scope.center =
-        {lat: 44, lng: 3};
-        $scope.zoom = 10;
+
+    var request = {
+        "@schemaLocation": "http://nhsd.com.au/v1/OrganisationFinder/GetOrganisationRequest GetOrganisationRequest.xsd",
+        "Identifier": {
+            "identifier_value": "String",
+            "identifier_schema": "http://www.altova.com/"
+        },
+        "Scope": {
+            "include_MutexMetadata": "true",
+            "include_RefMetadata": "true",
+            "mode": "EXCLUDE",
+            "Scope_Exception": [
+                "FACILITY",
+                [
+                    "KNOWN_AS"
+                ]
+            ]
+        }
     }
-    else
-    {
-        $scope.streetNumber = "12";
-        //$scope.streetName = "paris street";
-        $scope.city = "paris";
-        $scope.country = "france";
 
-        $scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city + "," + $scope.country;
+    var results;
+    //call orgservice to retreive org details
+    Organisation.getOrgdetails(request);
 
+
+});
+
+//    var response = mockdataService.getOrganisation(request);
+//
+
+
+
+
+
+//
+//    if (mockdataService.position != null) {
+//
+//    }
+//    else {
+//
+//    }
+//
+//    var servicePromise = GeoCoder.getLocations(scope.address).then(function (results) {
+//
+//
+//        var latLng = results[0].geometry.location;
+
+//            console.log(latLng.A);
+//            console.log(latLng.k);
+//
+//            var mapOptions = {
+//                zoom: 10,
+//                center: new google.maps.LatLng(latLng.A, latLng.k),
+//                mapTypeId: google.maps.MapTypeId.ROADMAP
+//            };
+//
+//            var map = new google.maps.Map(iElement[0], mapOptions);
+//
+//            map.setCenter(new google.maps.LatLng(parseFloat(latLng.k), parseFloat(latLng.A)));
+
+    //return new $q.defer().promise;
+
+
+//if (1 == 0) {
+//    $scope.center =
+//    {lat: 44, lng: 3};
+//    $scope.zoom = 10;
+//}
+//else {
+//    $scope.streetNumber = "12";
+//    //$scope.streetName = "paris street";
+//    $scope.city = "paris";
+//    $scope.country = "france";
+//
+//    $scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city + "," + $scope.country;
+//}
 //        GeoCoder.getLocations($scope.address).then(function (results) {
 //            var latLng = results[0].geometry.location;
 //            $scope.center =
@@ -53,9 +143,6 @@ app.controller('MapCtrl', function ($scope) {
 
 
 
-    }
-
-});
 
 
 //    $scope.addMarkerFromAddress = function () {
@@ -77,7 +164,9 @@ app.controller('MapCtrl', function ($scope) {
 //    };
 
 //
-app.directive('gmaps', function factory($timeout,$q,GeoCoder) {
+
+
+app.directive('gmaps', function factory($timeout, $q, GeoCoder,Mapper) {
     return {
         restrict: 'EA',
         template: '<div class="gmaps"></div>',
@@ -85,7 +174,8 @@ app.directive('gmaps', function factory($timeout,$q,GeoCoder) {
 
         link: function postLink(scope, iElement, iAttrs) {
 
-            var centerPromise = GeoCoder.getLocations(scope.address).then(function(results) {
+//call Mapper.GetMapLocation to return map details and setcenter to this location
+            var centerPromise = Mapper.GetMapLocation(scope.address).then(function (results) {
                 var latLng = results[0].geometry.location;
 
                 console.log(latLng.A);
