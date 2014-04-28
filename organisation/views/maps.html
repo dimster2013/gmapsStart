@@ -1,24 +1,4 @@
 <div ng-controller="MapCtrl">
+    <div class="gmaps"></div>
 
-
-        <gmaps center="center" zoom="zoom"></gmaps>
-
-        <div class="data">
-            <p>
-                <label>Latitude</label><input ng-model="center.lat"/>
-                <button ng-click="center.lat = center.lat - 1">-</button>
-                <button ng-click="center.lat = center.lat + 1">+</button>
-            </p>
-            <p>
-                <label>Longitude</label><input ng-model="center.lng"/>
-                <button ng-click="center.lng = center.lng - 1">-</button>
-                <button ng-click="center.lng = center.lng + 1">+</button>
-            </p>
-            <p>
-                <label>Zoom</label><input ng-model="zoom"/>
-                <button ng-click="zoom = zoom - 1">-</button>
-                <button ng-click="zoom = zoom + 1">+</button>
-            </p>
-        </div>
-    
 </div>

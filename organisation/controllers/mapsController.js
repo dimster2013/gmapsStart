@@ -21,11 +21,11 @@ app.service('GeoCoder', function ($q, $rootScope) {
     }
 });
 
-app.controller('MapCtrl', function ($scope,GeoCoder) {
+app.controller('MapCtrl', function ($scope,GeoCoder,$q) {
 
-    $scope.center =
-    {lat: 44, lng: 3};
-    $scope.zoom = 10;
+//    $scope.center =
+//    {lat: 44, lng: 3};
+//    $scope.zoom = 10;
 
     if (1 == 0) {
         $scope.center =
@@ -41,12 +41,34 @@ app.controller('MapCtrl', function ($scope,GeoCoder) {
 
         $scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city + "," + $scope.country;
 
-        GeoCoder.getLocations($scope.address).then(function (results) {
+//        GeoCoder.getLocations($scope.address).then(function (results) {
+//            var latLng = results[0].geometry.location;
+//            $scope.center =
+//            {lat: latLng.k, lng: latLng.A};
+//            $scope.zoom = 10;
+//        });
+
+        var centerPromise = GeoCoder.getLocations($scope.address).then(function(results) {
             var latLng = results[0].geometry.location;
-            $scope.center =
-            {lat: latLng.k, lng: latLng.A};
-            $scope.zoom = 10;
+
+            console.log(latLng.A);
+            console.log(latLng.k);
+
+            var mapOptions = {
+                zoom: 10,
+                center: new google.maps.LatLng(latLng.A, latLng.k),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map('div.gmaps', mapOptions);
+
+            map.setCenter(new google.maps.LatLng(parseFloat(latLng.k), parseFloat(latLng.A)));
+
+            return new $q.defer().promise;
         });
+
+
+
     }
 
 });
@@ -70,51 +92,55 @@ app.controller('MapCtrl', function ($scope,GeoCoder) {
 //        }
 //    };
 
-
-app.directive('gmaps', function factory($timeout) {
-    return {
-        restrict: 'EA',
-        template: '<div class="gmaps"></div>',
-        replace: true,
-        scope: {
-            center: '=center',
-            zoom: '=zoom'
-        },
-        link: function postLink(scope, iElement, iAttrs) {
-
-            var mapOptions = {
-                zoom: scope.zoom,
-                center: new google.maps.LatLng(scope.center.lat, scope.center.lng),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(iElement[0], mapOptions);
-
-            scope.$watch('center', function () {
-                map.setCenter(new google.maps.LatLng(parseFloat(scope.center.lat)
-                    , parseFloat(scope.center.lng)));
-            }, true);
-
-            google.maps.event.addListener(map, 'center_changed', function () {
-                $timeout(function () {
-                    var center = map.getCenter();
-                    scope.center.lat = center.lat();
-                    scope.center.lng = center.lng();
-                });
-            });
-
-            scope.$watch('zoom', function () {
-                map.setZoom(parseInt(scope.zoom));
-            });
-
-            google.maps.event.addListener(map, 'zoom_changed', function () {
-                $timeout(function () {
-                    scope.zoom = map.getZoom();
-                });
-            });
-
-        }
-    };
-});
+//
+//app.directive('gmaps', function factory($timeout) {
+//    return {
+//        restrict: 'EA',
+//        template: '<div class="gmaps"></div>',
+//        replace: true,
+//        scope: {
+//            center: '=center',
+//            zoom: '=zoom'
+//        },
+//        link: function postLink(scope, iElement, iAttrs) {
+//
+////            var mapOptions = {
+////                zoom: scope.zoom,
+////                center: new google.maps.LatLng(scope.center.lat, scope.center.lng),
+////                mapTypeId: google.maps.MapTypeId.ROADMAP
+////            };
+////            var map = new google.maps.Map(iElement[0], mapOptions);
+//
+////            scope.$watch('center', function () {
+////
+////
+////                map.setCenter(new google.maps.LatLng(parseFloat(scope.center.lat)
+////                    , parseFloat(scope.center.lng)));
+////
+////
+////            }, true);
+//
+////            google.maps.event.addListener(map, 'center_changed', function () {
+////                $timeout(function () {
+////                    var center = map.getCenter();
+////                    scope.center.lat = center.lat();
+////                    scope.center.lng = center.lng();
+////                });
+////            });
+////
+////            scope.$watch('zoom', function () {
+////                map.setZoom(parseInt(scope.zoom));
+////            });
+////
+////            google.maps.event.addListener(map, 'zoom_changed', function () {
+////                $timeout(function () {
+////                    scope.zoom = map.getZoom();
+////                });
+////            });
+//
+//        }
+//    };
+//});
 
 
 
