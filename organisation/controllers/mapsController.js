@@ -6,8 +6,6 @@ app.service('GeoCoder', function ($q, $rootScope) {
     return {
         getLocations: function (address) {
             var deferred = $q.defer();
-            address = "12 oxford street sydney";
-
 
             var geocoder = new google.maps.Geocoder();
             console.log('address', address);
@@ -38,9 +36,9 @@ app.controller('MapCtrl', function ($scope) {
     else
     {
         $scope.streetNumber = "12";
-        $scope.streetName = "sussex street";
-        $scope.city = "sydney";
-        $scope.country = "australia";
+        //$scope.streetName = "paris street";
+        $scope.city = "paris";
+        $scope.country = "france";
 
         $scope.address = $scope.streetNumber + "," + $scope.streetName + "," + $scope.city + "," + $scope.country;
 
@@ -84,11 +82,7 @@ app.directive('gmaps', function factory($timeout,$q,GeoCoder) {
         restrict: 'EA',
         template: '<div class="gmaps"></div>',
         replace: true,
-        scope: {
-            center: '=center',
-            zoom: '=zoom',
-            address:'=address'
-        },
+
         link: function postLink(scope, iElement, iAttrs) {
 
             var centerPromise = GeoCoder.getLocations(scope.address).then(function(results) {
