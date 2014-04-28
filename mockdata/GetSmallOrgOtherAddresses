@@ -1,0 +1,258 @@
+{
+    "@schemaLocation": "http://nhsd.com.au/v1/OrganisationFinder/GetOrganisationResponse GetOrganisationResponse.xsd",
+    "OrganisationBom": {
+        "primary_Identifier": "0",
+        "Contact": [
+            {
+                "contact_Detail": "String",
+                "contact_Purpose": {
+                    "@descr": "String",
+                    "@subcode": "-",
+                    "@taxRef": "http://www.altova.com/",
+                    "@code": "-",
+                    "#text": "Correspondence"
+                },
+                "person_Ref": "http://www.altova.com/",
+                "contact_Priority": "0",
+                "Address": {
+                    "post_Code": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "suburb": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "state": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "country": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "building_Name": "String",
+                    "lot_Number_Prefix": "String",
+                    "lot_Number": "String",
+                    "lot_Number_Suffix": "String",
+                    "flat_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "flat_Number_Prefix": "String",
+                    "flat_Number": "String",
+                    "flat_Number_Suffix": "String",
+                    "level_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "level_Number_Prefix": "String",
+                    "level_Number": "String",
+                    "level_Number_Suffix": "String",
+                    "number_First_Suffix": "String",
+                    "number_First": "String",
+                    "number_First_prefix": "String",
+                    "number_Last_Suffix": "String",
+                    "number_Last": "String",
+                    "number_Last_Prefix": "String",
+                    "location_Description": "String",
+                    "private_Street": "String",
+                    "alias_Principle": "String",
+                    "confidence": "String",
+                    "legal_Parcel_Id": "String",
+                    "address_Name": "String",
+                    "address_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "street_Class": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "street_Name": "String",
+                    "street_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "street_Suffix": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    }
+                },
+                "PO_Box": {
+                    "line1": "String",
+                    "line2": "String",
+                    "suburb": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "state": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    }
+                }
+            },
+            {
+                "contact_Detail": "String",
+                "contact_Purpose": {
+                    "@descr": "String",
+                    "@subcode": "-",
+                    "@taxRef": "http://www.altova.com/",
+                    "@code": "-",
+                    "#text": "http://www.altova.com/"
+                },
+                "person_Ref": "http://www.altova.com/",
+                "contact_Priority": "0",
+                "Address": {
+                    "post_Code": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "suburb": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "state": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "country": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "building_Name": "String",
+                    "lot_Number_Prefix": "String",
+                    "lot_Number": "String",
+                    "lot_Number_Suffix": "String",
+                    "flat_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "flat_Number_Prefix": "String",
+                    "flat_Number": "String",
+                    "flat_Number_Suffix": "String",
+                    "level_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "level_Number_Prefix": "String",
+                    "level_Number": "String",
+                    "level_Number_Suffix": "String",
+                    "number_First_Suffix": "String",
+                    "number_First": "String",
+                    "number_First_prefix": "String",
+                    "number_Last_Suffix": "String",
+                    "number_Last": "String",
+                    "number_Last_Prefix": "String",
+                    "location_Description": "String",
+                    "private_Street": "String",
+                    "alias_Principle": "String",
+                    "confidence": "String",
+                    "legal_Parcel_Id": "String",
+                    "address_Name": "String",
+                    "address_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "street_Class": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "street_Name": "String",
+                    "street_Type": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "street_Suffix": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    }
+                },
+                "PO_Box": {
+                    "line1": "String",
+                    "line2": "String",
+                    "suburb": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    },
+                    "state": {
+                        "@descr": "String",
+                        "@subcode": "-",
+                        "@taxRef": "http://www.altova.com/",
+                        "@code": "-",
+                        "#text": "http://www.altova.com/"
+                    }
+                }
+            }
+        ]
+    }
+}
