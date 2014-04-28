@@ -31,20 +31,29 @@ app.service('Organisation', function ($q, $rootScope,mockdataService) {
         getOrgdetails: function (request) {
             var deferred = $q.defer();
 
-            mockdataService.getOrganisation(request, function (results) {
-                $rootScope.$apply(function () {
-                    console.log(results);
+            var mockData=true;
 
-                    $scope.streetNumber=results[0].Address.streetNumber;
-                    $scope.streetName= results[0].Address.streetName;
-                    $scope.city= results[0].Address.city;
-                    $scope.position=results[0].Address.position;
+            if (mockData) {
+                mockdataService.getOrganisation(request, function (results) {
+                    $rootScope.$apply(function () {
+                        console.log('hoera',results);
 
-                    deferred.resolve(results);
+                        $scope.streetNumber = results[0].Address.streetNumber;
+                        $scope.streetName = results[0].Address.streetName;
+                        $scope.city = results[0].Address.city;
+                        $scope.position = results[0].Address.position;
+
+                        deferred.resolve(results);
+                    });
                 });
-            });
 
-            return deferred.promise;
+                return deferred.promise;
+            }
+            else
+            {
+                //call real service
+                var test=0;
+            }
         }
     }
 });
@@ -78,7 +87,7 @@ app.controller('MapCtrl', function ($scope,Organisation) {
 
     var results;
     //call orgservice to retreive org details
-    Organisation.getOrgdetails(request);
+   Organisation.getOrgdetails(request);
 
 
 });
@@ -165,71 +174,71 @@ app.controller('MapCtrl', function ($scope,Organisation) {
 
 //
 
-
-app.directive('gmaps', function factory($timeout, $q, GeoCoder,Mapper) {
-    return {
-        restrict: 'EA',
-        template: '<div class="gmaps"></div>',
-        replace: true,
-
-        link: function postLink(scope, iElement, iAttrs) {
-
-//call Mapper.GetMapLocation to return map details and setcenter to this location
-            var centerPromise = Mapper.GetMapLocation(scope.address).then(function (results) {
-                var latLng = results[0].geometry.location;
-
-                console.log(latLng.A);
-                console.log(latLng.k);
-
-                var mapOptions = {
-                    zoom: 10,
-                    center: new google.maps.LatLng(latLng.A, latLng.k),
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-
-                var map = new google.maps.Map(iElement[0], mapOptions);
-
-                map.setCenter(new google.maps.LatLng(parseFloat(latLng.k), parseFloat(latLng.A)));
-
-                return new $q.defer().promise;
-            });
-//            var mapOptions = {
-//                zoom: scope.zoom,
-//                center: new google.maps.LatLng(scope.center.lat, scope.center.lng),
-//                mapTypeId: google.maps.MapTypeId.ROADMAP
-//            };
-//            var map = new google.maps.Map(iElement[0], mapOptions);
-
-//            scope.$watch('center', function () {
 //
+//app.directive('gmaps', function factory($timeout, $q, GeoCoder,Mapper) {
+//    return {
+//        restrict: 'EA',
+//        template: '<div class="gmaps"></div>',
+//        replace: true,
 //
-//                map.setCenter(new google.maps.LatLng(parseFloat(scope.center.lat)
-//                    , parseFloat(scope.center.lng)));
+//        link: function postLink(scope, iElement, iAttrs) {
 //
+////call Mapper.GetMapLocation to return map details and setcenter to this location
+//            var centerPromise = Mapper.GetMapLocation(scope.address).then(function (results) {
+//                var latLng = results[0].geometry.location;
 //
-//            }, true);
-
-//            google.maps.event.addListener(map, 'center_changed', function () {
-//                $timeout(function () {
-//                    var center = map.getCenter();
-//                    scope.center.lat = center.lat();
-//                    scope.center.lng = center.lng();
-//                });
+//                console.log(latLng.A);
+//                console.log(latLng.k);
+//
+//                var mapOptions = {
+//                    zoom: 10,
+//                    center: new google.maps.LatLng(latLng.A, latLng.k),
+//                    mapTypeId: google.maps.MapTypeId.ROADMAP
+//                };
+//
+//                var map = new google.maps.Map(iElement[0], mapOptions);
+//
+//                map.setCenter(new google.maps.LatLng(parseFloat(latLng.k), parseFloat(latLng.A)));
+//
+//                return new $q.defer().promise;
 //            });
+////            var mapOptions = {
+////                zoom: scope.zoom,
+////                center: new google.maps.LatLng(scope.center.lat, scope.center.lng),
+////                mapTypeId: google.maps.MapTypeId.ROADMAP
+////            };
+////            var map = new google.maps.Map(iElement[0], mapOptions);
 //
-//            scope.$watch('zoom', function () {
-//                map.setZoom(parseInt(scope.zoom));
-//            });
+////            scope.$watch('center', function () {
+////
+////
+////                map.setCenter(new google.maps.LatLng(parseFloat(scope.center.lat)
+////                    , parseFloat(scope.center.lng)));
+////
+////
+////            }, true);
 //
-//            google.maps.event.addListener(map, 'zoom_changed', function () {
-//                $timeout(function () {
-//                    scope.zoom = map.getZoom();
-//                });
-//            });
-
-        }
-    };
-});
+////            google.maps.event.addListener(map, 'center_changed', function () {
+////                $timeout(function () {
+////                    var center = map.getCenter();
+////                    scope.center.lat = center.lat();
+////                    scope.center.lng = center.lng();
+////                });
+////            });
+////
+////            scope.$watch('zoom', function () {
+////                map.setZoom(parseInt(scope.zoom));
+////            });
+////
+////            google.maps.event.addListener(map, 'zoom_changed', function () {
+////                $timeout(function () {
+////                    scope.zoom = map.getZoom();
+////                });
+////            });
+//
+//        }
+//    };
+//});
 
 
 
