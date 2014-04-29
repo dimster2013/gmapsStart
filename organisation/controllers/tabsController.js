@@ -12,20 +12,21 @@ app.controller('tabsController', function ($scope, mockdataService) {
 //    ];
 
 
-    mockdataService.getOrganisation(mockdataService.request).then(function (results) {
+    var promise = mockdataService.getOrganisation(mockdataService.request).then(function (results) {
         console.log('org details:', results);
-        var tabs
-        [];
+        var arLen = results.OrganisationBom.Contact.length;
+
+        var tabs=[];
 
 
-        for (var i = 0;
-             i < contacts.length;
-             i++
-            ) {
-            var tab = {title: contacts[i].ContactPurpose, content: 'organisation/views/office.html' };
-            tabs[i] += tab;
+        for (var i = 0;i < arLen; i++)
+        {
+            var tab = {title: results.OrganisationBom.Contact[i].contact_Purpose.text, content: 'organisation/views/'+results.OrganisationBom.Contact[i].contact_Purpose.text+'.html' };
+            tabs[i] = tab;
         }
         $scope.tabs = tabs;
+
+        return new $q.defer().promise;
     })
 
 
