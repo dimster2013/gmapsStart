@@ -1,5 +1,4 @@
 app.controller('MapCtrl', function ($scope, mockdataService) {
-
     var request = {
         "@schemaLocation": "http://nhsd.com.au/v1/OrganisationFinder/GetOrganisationRequest GetOrganisationRequest.xsd",
         "Identifier": {
@@ -18,11 +17,8 @@ app.controller('MapCtrl', function ($scope, mockdataService) {
             ]
         }
     }
-
     $scope.request = request;
-
 });
-
 
 app.directive('gmaps', function factory($timeout, $q, GeoCoder, mockdataService) {
     return {
@@ -32,53 +28,51 @@ app.directive('gmaps', function factory($timeout, $q, GeoCoder, mockdataService)
 
         link: function postLink(scope, iElement, iAttrs) {
 
-            //call  to return map details and setcenter to this location
-
+            var lat, lng;
             var centerPromise = mockdataService.getOrganisation(scope.request).then(function (results) {
-                console.log('hoerb', results);
+                console.log('org details:', results);
+                lat = results.OrganisationBom.Contact["0"].Address.lat;
+                lng = results.OrganisationBom.Contact["0"].Address.lng;
 
-                var lng = results.OrganisationBom.Contact["0"].Address.lng;
-                var lat = results.OrganisationBom.Contact["0"].Address.lat;
+                if (!lat | !lng) {
+                    var country = results.OrganisationBom.Contact["0"].Address.country["#text"];
+                    var suburb = results.OrganisationBom.Contact["0"].Address.suburb["#text"];
+                    scope.address = suburb + "," + country;
+                    if (suburb !=null) {
+                        var servicePromise = GeoCoder.getLocations(scope.address).then(function (results) {
+                            var latLng = results[0].geometry.location;
+                            lat = latLng.k;
+                            lng = latLng.A;
 
-                var country = results.OrganisationBom.Contact["0"].Address.country["#text"];
-                var suburb = results.OrganisationBom.Contact["0"].Address.suburb["#text"];
+                            var mapOptions = {
+                                zoom: 10,
+                                center: new google.maps.LatLng(lat, lng),
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
 
-                scope.address = suburb + "," + country;
-
-                var servicePromise = GeoCoder.getLocations(scope.address).then(function (results) {
-                    var latLng = results[0].geometry.location;
-
-                    console.log(latLng.A);
-                    console.log(latLng.k);
+                            var map = new google.maps.Map(iElement[0], mapOptions);
+                            console.log('lat', lat);
+                            console.log('lng', lng);
+                            map.setCenter(new google.maps.LatLng(parseFloat(lat), parseFloat(lng)));
+                            return new $q.defer().promise;
+                        });
+                    }
+                }
+                else {
 
                     var mapOptions = {
                         zoom: 10,
-                        center: new google.maps.LatLng(latLng.A, latLng.k),
+                        center: new google.maps.LatLng(lat, lng),
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
 
                     var map = new google.maps.Map(iElement[0], mapOptions);
-
-                    map.setCenter(new google.maps.LatLng(parseFloat(latLng.k), parseFloat(latLng.A)));
-
+                    console.log('lat', lat);
+                    console.log('lng', lng);
+                    map.setCenter(new google.maps.LatLng(parseFloat(lat), parseFloat(lng)));
                     return new $q.defer().promise;
-                });
-
-                var mapOptions = {
-                    zoom: 10,
-                    center: new google.maps.LatLng(lng, lat),
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-
-                var map = new google.maps.Map(iElement[0], mapOptions);
-
-                map.setCenter(new google.maps.LatLng(parseFloat(lat), parseFloat(lng)));
-
-                return new $q.defer().promise;
-
+                }
             });
-
-
         }
     };
 });
