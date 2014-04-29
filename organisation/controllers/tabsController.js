@@ -5,28 +5,33 @@
 
 app.controller('tabsController', function ($scope, mockdataService) {
 
-//    $scope.tabs = [
-//        { title: "Correspondance", content: 'organisation/views/correspondence.html' },
-//        { title: "Office", content: 'organisation/views/office.html' },
-//        { title: "Clinic", content: 'organisation/views/clinic.html' }
-//    ];
 
-
-    var promise = mockdataService.getOrganisation(mockdataService.request).then(function (results) {
+    mockdataService.getOrganisation(mockdataService.request).then(function (results) {
         console.log('org details:', results);
         var arLen = results.OrganisationBom.Contact.length;
 
-        var tabs=[];
+        var tabs = [];
 
 
-        for (var i = 0;i < arLen; i++)
-        {
-            var tab = {title: results.OrganisationBom.Contact[i].contact_Purpose.text, content: 'organisation/views/'+results.OrganisationBom.Contact[i].contact_Purpose.text+'.html' };
+        for (var i = 0; i < arLen; i++) {
+            var tab = {
+                    title: results.OrganisationBom.Contact[i].contact_Purpose.text,
+                    content: 'organisation/views/' + results.OrganisationBom.Contact[i].contact_Purpose.text + '.html',
+                    streetNumber: results.OrganisationBom.Contact[i].Address.number_First,
+                    streetName: results.OrganisationBom.Contact[i].Address.street_Name,
+                    suburb: results.OrganisationBom.Contact[i].Address.suburb.text
+
+                }
+                ;
+
+//
+//            $scope.suburb=results.OrganisationBom.Contact[i].Address.suburb.text;
+
             tabs[i] = tab;
         }
         $scope.tabs = tabs;
 
-        return new $q.defer().promise;
+
     })
 
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5906fc1-aca1-4213-9e91-9220c0cb2dc6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organisation/views/correspondence.html" afterPath="$PROJECT_DIR$/organisation/views/correspondence.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organisation/controllers/tabsController.js" afterPath="$PROJECT_DIR$/organisation/controllers/tabsController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,8 +30,8 @@
       <file leaf-file-name="GetSmallOrgOtherAddresses.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mockdata/GetSmallOrgOtherAddresses.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="3621" max-vertical-offset="4505">
-              <caret line="227" column="37" selection-start-line="227" selection-start-column="37" selection-end-line="227" selection-end-column="37" />
+            <state vertical-scroll-proportion="-9.153846" vertical-offset="255" max-vertical-offset="4505">
+              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -46,13 +47,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="correspondence.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/organisation/views/correspondence.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="272">
+              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="tabsController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/organisation/controllers/tabsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15384616" vertical-offset="255" max-vertical-offset="782">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.73913044" vertical-offset="0" max-vertical-offset="867">
+              <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
               <folding>
-                <element signature="e#1045#1598#0" expanded="false" />
+                <element signature="e#1150#1703#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -81,7 +92,6 @@
         <option value="$PROJECT_DIR$/organisation/directives/map.js" />
         <option value="$PROJECT_DIR$/organisation/controllers/organisationController.js" />
         <option value="$PROJECT_DIR$/organisation/views/correspondance.html" />
-        <option value="$PROJECT_DIR$/organisation/views/correspondence.html" />
         <option value="$PROJECT_DIR$/css/maps.css" />
         <option value="/vm:87" />
         <option value="maps.gstatic.com/intl/en_gb/mapfiles/api-3/16/9/main.js" />
@@ -94,6 +104,7 @@
         <option value="$PROJECT_DIR$/organisation/views/maps.html" />
         <option value="$PROJECT_DIR$/organisation/controllers/mapsController.js" />
         <option value="$PROJECT_DIR$/mockdata/GetSmallOrgOtherAddresses.json" />
+        <option value="$PROJECT_DIR$/organisation/views/correspondence.html" />
         <option value="$PROJECT_DIR$/organisation/controllers/tabsController.js" />
       </list>
     </option>
@@ -461,7 +472,11 @@
       <created>1398767558711</created>
       <updated>1398767558711</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="`">
+      <created>1398768999649</created>
+      <updated>1398768999649</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -474,9 +489,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16822916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4902386" sideWeight="0.6802083" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39587852" sideWeight="0.6802083" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4902386" sideWeight="0.31979167" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39587852" sideWeight="0.31979167" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -547,14 +562,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/organisation/controllers/tabsController.js</url>
-          <line>28</line>
-          <option name="timeStamp" value="120" />
+          <line>29</line>
+          <option name="timeStamp" value="124" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="124" />
+      <option name="time" value="126" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -804,20 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/organisation/views/clinic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
-          <caret line="0" column="14" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organisation/views/correspondence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27113238" vertical-offset="0" max-vertical-offset="627">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="https://maps.gstatic.com/intl/en_gb/mapfiles/api-3/16/9/main.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
@@ -911,28 +912,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/angular.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1421" max-vertical-offset="3604">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/organisation/controllers/mapsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="2142">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state vertical-scroll-proportion="-1.8076923" vertical-offset="1122" max-vertical-offset="2142">
+          <caret line="36" column="63" selection-start-line="36" selection-start-column="63" selection-end-line="36" selection-end-column="63" />
           <folding>
             <element signature="e#81#634#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mockdata/GetSmallOrgOtherAddresses.json">
+    <entry file="file://$PROJECT_DIR$/organisation/views/clinic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="3621" max-vertical-offset="4505">
-          <caret line="227" column="37" selection-start-line="227" selection-start-column="37" selection-end-line="227" selection-end-column="37" />
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="14" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/angular.min.js">
+    <entry file="file://$PROJECT_DIR$/mockdata/GetSmallOrgOtherAddresses.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="1421" max-vertical-offset="3604">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="255" max-vertical-offset="4505">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -945,12 +954,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/organisation/views/correspondence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="272">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/organisation/controllers/tabsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15384616" vertical-offset="255" max-vertical-offset="782">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.73913044" vertical-offset="0" max-vertical-offset="867">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
           <folding>
-            <element signature="e#1045#1598#0" expanded="false" />
+            <element signature="e#1150#1703#0" expanded="false" />
           </folding>
         </state>
       </provider>
