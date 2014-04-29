@@ -4,7 +4,6 @@
 
 
 app.controller('tabsController', function ($scope, mockdataService) {
-
 //    $scope.tabs = [
 //        { title: "Correspondance", content: 'organisation/views/correspondence.html' },
 //        { title: "Office", content: 'organisation/views/office.html' },
@@ -12,20 +11,10 @@ app.controller('tabsController', function ($scope, mockdataService) {
 //    ];
 
 
-    mockdataService.getOrganisation(mockdataService.request).then(function (results) {
+    var centerPromise = mockdataService.getOrganisation(scope.request).then(function (results) {
         console.log('org details:', results);
-        var tabs
-        [];
 
 
-        for (var i = 0;
-             i < contacts.length;
-             i++
-            ) {
-            var tab = {title: contacts[i].ContactPurpose, content: 'organisation/views/office.html' };
-            tabs[i] += tab;
-        }
-        $scope.tabs = tabs;
     })
 
 
